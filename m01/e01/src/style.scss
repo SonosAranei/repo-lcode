@@ -1,0 +1,40 @@
+@use "base" as *;
+
+$base-colors: red, blue, green;
+
+@for $i from 1 through length($base-colors) {
+    $base-color: nth($base-colors, $i);
+    .container-#{$i} {
+        display: flex;
+        margin: 5px;
+        gap: 10px;
+        .box {   
+            height: 100px;
+            width: 80px;
+            border-radius: 5px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            .color-box-text {
+                mix-blend-mode: difference;
+            }
+            &.base-color {
+                width: 120px;
+                background-color: $base-color;            
+            }
+            @for $i from 1 through 4 {
+                &.lighten-#{$i} {
+                    background-color: lighten($color: $base-color, $amount: $i * 5%);
+                }
+            } 
+            @for $i from 1 through 4 {
+                &.darken-#{$i} {
+                    background-color: darken($color: $base-color, $amount: $i * 5%);
+                }
+            } 
+        }
+    }
+}
+
