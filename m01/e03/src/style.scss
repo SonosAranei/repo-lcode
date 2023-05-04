@@ -1,0 +1,39 @@
+@use "base" as *;
+
+$navbar-color: darkcyan;
+
+nav {
+    margin: 60px;
+    ul {
+        margin-top: 20px;
+        background-color: $navbar-color;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        li {
+            a {
+                display: block;
+                text-decoration: none;
+                color: white;
+                padding: 30px;
+                &:hover {
+                    background-color: darken($color: $navbar-color, $amount: 10%);
+                }               
+            }
+            &.active a {
+                background-color: darken($color: $navbar-color, $amount: 10%);
+            }
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        ul {
+            flex-direction: column;
+            li {
+                a {
+                    text-align: center;                                 
+                }                
+            }
+        }
+    }
+}
+
